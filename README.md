@@ -8,3 +8,4 @@ Dynare is one of the most used tools by economist who work with macroeconomics. 
 * Blocks for initval, endval, model and shocks
 * Stochastic and deterministic commands have different colors: deterministic commands are in blue
 * Greek letters are highlighted, so one can easy find parameters in an usual model
+* Red background when you forget to end the line with ;

@@ -4,11 +4,11 @@ fileTypes: [ # An array of file extensions.
   'mod'
 ]
 firstLineMatch: '' # A regular expression that is matched against the first line of the document when Atom is trying to decide if the grammar is appropriate. Useful for shell scripts, mostly.
-foldingStartMarker: 'model;' # A regular expression that checks for the start of a foldable area (such as `{`).
-foldingStopMarker: 'end;' # A regular expression that checks for the end of a foldable area (such as `}`). If both folding markers are matched in the same line, there will be no foldable area.
+foldingStartMarker: '' # A regular expression that checks for the start of a foldable area (such as `{`).
+foldingStopMarker: '' # A regular expression that checks for the end of a foldable area (such as `}`). If both folding markers are matched in the same line, there will be no foldable area.
 patterns: [ # An array of individual pattern declarations.
   {
-    match: '\\b(var)\\b|\\b(varexo)\\b|\\b(parameters)\\b' # A regular expression that matches some content. Optional.
+    match: '\\b(var)\\b|\\b(varexo)\\b|\\b(parameters)\\b|\\b(varobs)\\b' # A regular expression that matches some content. Optional.
     name: 'syntax.keyword' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
   {
@@ -24,12 +24,18 @@ patterns: [ # An array of individual pattern declarations.
     name: 'syntax.comment' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
   {
-    match: '\\b(alpha)\\b|\\b(beta)\\b|\\b(delta)\\b|\\b(gamma)\\b|\\b(rho)\\b|\\b(phi)\\b|\\b(psi)\\b|\\b(pi)\\b|\\b(sigma)\\b|\\b(theta)\\b|\\b(tau)\\b' # A regular expression that matches some content. Optional.
+    match:'[^;]\n'
+    name:'syntax.invalid.syntax.illegal'
+  }
+  {
+    match: '\\b(alpha)\\b|\\b(beta)\\b|\\b(delta)\\b|\\b(gamma)\\b|\\b(rho)\\b
+    |\\b(phi)\\b|\\b(psi)\\b|\\b(pi)\\b|\\b(sigma)\\b|\\b(theta)\\b|\\b(tau)\\b
+    |\\b(epsilon)\\b|\\b(rho)\\b' # A regular expression that matches some content. Optional.
     name: 'syntax.variable' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
     {
-      #match: '\\b(end;)\\b' # A regular expression that matches some content. Optional.
-      #name: 'syntax.constant' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
+      match: '\\b(estimation)\\b' # A regular expression that matches some content. Optional.
+      name: 'syntax.support.syntax.class' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
     }
     {
     'begin': '\\b(model)\\b'
@@ -56,7 +62,7 @@ patterns: [ # An array of individual pattern declarations.
     'endCaptures':
       '1':
         'name': 'syntax.string'
-    'name': 'teste'
+    'name': 'initval'
     'patterns': [
       {
         'include': '$self'
@@ -72,7 +78,7 @@ patterns: [ # An array of individual pattern declarations.
     'endCaptures':
       '1':
         'name': 'syntax.string'
-    'name': 'teste'
+    'name': 'endval'
     'patterns': [
       {
         'include': '$self'
@@ -88,7 +94,7 @@ patterns: [ # An array of individual pattern declarations.
     'endCaptures':
       '1':
         'name': 'syntax.string'
-    'name': 'teste'
+    'name': 'shock'
     'patterns': [
       {
         'include': '$self'
@@ -109,23 +115,43 @@ patterns: [ # An array of individual pattern declarations.
       }
       ]
     }
-  {
-    match: ''
-    begin: ''
-    end: ''
-    name: ''
-    contentName: ''
-    captures:
-      0:
-        name: ''
-    beginCaptures:
-      0:
-        name: ''
-    endCaptures:
-      0:
-        name: ''
-    include: ''
-  }
+    {
+    'begin': '\\b(estimated\\_params)\\b'
+    'beginCaptures':
+      '1':
+        'name': 'syntax.string'
+    'end': '\\b(end)\\b'
+    'endCaptures':
+      '1':
+        'name': 'syntax.string'
+    'name': 'estim_param'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+      {
+       match:'\\b(normal\\_pdf)\\b|\\b(gamma\\_pdf)\\b|\\b(beta\\_pdf)\\b|\\b(inv\\_gamma\\_pdf)\\b|\\b(uniform\\_pdf)\\b'
+       name:'syntax.string.syntax.regexp'
+      }
+     ]
+    }
+  # {
+  #   match: ''
+  #   begin: ''
+  #   end: ''
+  #   name: ''
+  #   contentName: ''
+  #   captures:
+  #     0:
+  #       name: ''
+  #   beginCaptures:
+  #     0:
+  #       name: ''
+  #   endCaptures:
+  #     0:
+  #       name: ''
+  #   include: ''
+  # }
 ]
 repository: # An array of rules. If you're going to be referencing one bit of code over and over again, stick it here so that you can edit all in one place.
   ruleName: # Can be anything.
