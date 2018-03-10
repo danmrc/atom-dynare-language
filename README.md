@@ -1,4 +1,4 @@
-#Atom Highlighting for Dynare
+# Atom Highlighting for Dynare
 
 Dynare is one of the most used tools by economist who work with macroeconomics. This project attempts to create a syntax highlighting for Dynare in Atom.  
 
