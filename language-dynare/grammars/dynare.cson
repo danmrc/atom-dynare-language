@@ -4,8 +4,8 @@ fileTypes: [ # An array of file extensions.
   'mod'
 ]
 firstLineMatch: '' # A regular expression that is matched against the first line of the document when Atom is trying to decide if the grammar is appropriate. Useful for shell scripts, mostly.
-foldingStartMarker: '' # A regular expression that checks for the start of a foldable area (such as `{`).
-foldingStopMarker: '' # A regular expression that checks for the end of a foldable area (such as `}`). If both folding markers are matched in the same line, there will be no foldable area.
+foldingStartMarker: 'model;' # A regular expression that checks for the start of a foldable area (such as `{`).
+foldingStopMarker: 'end;' # A regular expression that checks for the end of a foldable area (such as `}`). If both folding markers are matched in the same line, there will be no foldable area.
 patterns: [ # An array of individual pattern declarations.
   {
     match: '\\b(var)\\b|\\b(varexo)\\b|\\b(parameters)\\b' # A regular expression that matches some content. Optional.

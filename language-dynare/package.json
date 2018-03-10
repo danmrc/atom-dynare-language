@@ -1,8 +1,8 @@
 {
   "name": "language-dynare",
   "main": "./lib/language-dynare",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.0.1",
+  "description": "A syntax highlight for dynare",
   "keywords": [
   ],
   "repository": "https://github.com/danmrc/atom-dynare-language",
