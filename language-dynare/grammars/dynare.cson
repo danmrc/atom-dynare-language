@@ -36,7 +36,7 @@ patterns: [ # An array of individual pattern declarations.
     name: 'syntax.support.syntax.class' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
   {
-    match: '@#(include|includepath|define|echo|error)' # A regular expression that matches some content. Optional.
+    match: '@#(\\b(include)\\b|\\b(includepath)\\b|\\b(define)\\b|\\b(echo)\\b|\\b(error)\\b)' # A regular expression that matches some content. Optional.
     name: 'syntax.string.syntax.regexp' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
   {
@@ -141,7 +141,7 @@ patterns: [ # An array of individual pattern declarations.
   'endCaptures':
     '1':
       'name': 'syntax.string.syntax.regexp'
-  'name': 'teste'
+  'name': 'macro.if'
   'patterns': [
     {
       'include': '$self'
@@ -159,11 +159,11 @@ patterns: [ # An array of individual pattern declarations.
       'name': 'syntax.string.string.regexp'
     '2':
       'name': 'syntax.string.string.regexp'
-  'end': '\\b(@#endfor)\\b'
+  'end': '(@#endfor)'
   'endCaptures':
     '1':
       'name': 'syntax.string'
-  'name': 'teste'
+  'name': 'macro.for'
   'patterns': [
     {
       'include': '$self'

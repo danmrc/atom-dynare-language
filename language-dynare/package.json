@@ -1,7 +1,7 @@
 {
   "name": "language-dynare",
   "main": "./lib/language-dynare",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A syntax highlight for dynare",
   "keywords": [
   ],
