@@ -23,111 +23,153 @@ patterns: [ # An array of individual pattern declarations.
     match: '\\/\\/.*' # A regular expression that matches some content. Optional.
     name: 'syntax.comment' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
-   {
-     match:'[^;]\\n'
-     name:'syntax.invalid.syntax.illegal'
-   }
+  {
+   match:'[^;]\\n'
+   name:'syntax.invalid.syntax.illegal'
+  }
   {
     match: '\\b(alpha)\\b|\\b(beta)\\b|\\b(delta)\\b|\\b(gamma)\\b|\\b(rho)\\b|\\b(phi)\\b|\\b(psi)\\b|\\b(pi)\\b|\\b(sigma)\\b|\\b(theta)\\b|\\b(tau)\\b|\\b(epsilon)\\b' # A regular expression that matches some content. Optional.
     name: 'syntax.variable' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
+  {
+    match: '\\b(estimation)\\b' # A regular expression that matches some content. Optional.
+    name: 'syntax.support.syntax.class' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
+  }
+  {
+    match: '@#(include|includepath|define|echo|error)' # A regular expression that matches some content. Optional.
+    name: 'syntax.string.syntax.regexp' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
+  }
+  {
+  'begin': '\\b(model)\\b'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string'
+  'end': '\\b(end)\\b'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string'
+  'name': 'teste'
+  'patterns': [
     {
-      match: '\\b(estimation)\\b' # A regular expression that matches some content. Optional.
-      name: 'syntax.support.syntax.class' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
+      'include': '$self'
+    }
+    ]
+  }
+  {
+  'begin': '\\b(initval)\\b'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string'
+  'end': '\\b(end)\\b'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string'
+  'name': 'initval'
+  'patterns': [
+    {
+      'include': '$self'
+    }
+    ]
+  }
+  {
+  'begin': '\\b(endval)\\b'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string'
+  'end': '\\b(end)\\b'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string'
+  'name': 'endval'
+  'patterns': [
+    {
+      'include': '$self'
+    }
+    ]
+  }
+  {
+  'begin': '\\b(shocks)\\b'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string'
+  'end': '\\b(end)\\b'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string'
+  'name': 'shock'
+  'patterns': [
+    {
+      'include': '$self'
     }
     {
-    'begin': '\\b(model)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'syntax.string'
-    'end': '\\b(end)\\b'
-    'endCaptures':
-      '1':
-        'name': 'syntax.string'
-    'name': 'teste'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-      ]
+      match:'\\b(periods)\\b|\\b(values)\\b'
+      name:'syntax.punctuation.syntax.identity'
+    }
+    ]
+  }
+  {
+   'begin': '\\/\\*'
+   'end': '\\*\\/'
+   'name': 'syntax.comment'
+  }
+  {
+  'begin': '\\b(estimated\\_params)\\b'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string'
+  'end': '\\b(end)\\b'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string'
+  'name': 'estim_param'
+  'patterns': [
+    {
+      'include': '$self'
     }
     {
-    'begin': '\\b(initval)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'syntax.string'
-    'end': '\\b(end)\\b'
-    'endCaptures':
-      '1':
-        'name': 'syntax.string'
-    'name': 'initval'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-      ]
+      match:'\\b(normal\\_pdf)\\b|\\b(gamma\\_pdf)\\b|\\b(beta\\_pdf)\\b|\\b(inv\\_gamma\\_pdf)\\b|\\b(uniform\\_pdf)\\b'
+      name:'syntax.string.syntax.regexp'
+    }
+    ]
+  }
+  {
+  'begin': '(@#if)'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string.syntax.regexp'
+  'end': '(@#endif)'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string.syntax.regexp'
+  'name': 'teste'
+  'patterns': [
+    {
+      'include': '$self'
     }
     {
-    'begin': '\\b(endval)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'syntax.string'
-    'end': '\\b(end)\\b'
-    'endCaptures':
-      '1':
-        'name': 'syntax.string'
-    'name': 'endval'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-      ]
+     match:'(@#else)'
+     name:'syntax.string.syntax.regexp'
     }
+    ]
+  }
+  {
+  'begin': '(@#for).*(in)'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string.string.regexp'
+    '2':
+      'name': 'syntax.string.string.regexp'
+  'end': '\\b(@#endfor)\\b'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string'
+  'name': 'teste'
+  'patterns': [
     {
-    'begin': '\\b(shocks)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'syntax.string'
-    'end': '\\b(end)\\b'
-    'endCaptures':
-      '1':
-        'name': 'syntax.string'
-    'name': 'shock'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-      {
-        match:'\\b(periods)\\b|\\b(values)\\b'
-        name:'syntax.string.syntax.regexp'
-      }
-      ]
+      'include': '$self'
     }
-    {
-     'begin': '\\/\\*'
-     'end': '\\*\\/'
-     'name': 'syntax.comment'
-    }
-    {
-    'begin': '\\b(estimated\\_params)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'syntax.string'
-    'end': '\\b(end)\\b'
-    'endCaptures':
-      '1':
-        'name': 'syntax.string'
-    'name': 'estim_param'
-    'patterns': [
-      {
-        'include': '$self'
-      }
-      {
-       match:'\\b(normal\\_pdf)\\b|\\b(gamma\\_pdf)\\b|\\b(beta\\_pdf)\\b|\\b(inv\\_gamma\\_pdf)\\b|\\b(uniform\\_pdf)\\b'
-       name:'syntax.string.syntax.regexp'
-      }
-     ]
-    }
+    ]
+  }
   # {
   #   match: ''
   #   begin: ''
