@@ -28,7 +28,7 @@ patterns: [ # An array of individual pattern declarations.
    name:'syntax.invalid.syntax.illegal'
   }
   {
-    match: '\\b(alpha)\\b|\\b(beta)\\b|\\b(delta)\\b|\\b(gamma)\\b|\\b(rho)\\b|\\b(phi)\\b|\\b(psi)\\b|\\b(pi)\\b|\\b(sigma)\\b|\\b(theta)\\b|\\b(tau)\\b|\\b(epsilon)\\b' # A regular expression that matches some content. Optional.
+    match: '\\b(alpha)\\b|\\b(beta)\\b|\\b(delta)\\b|\\b(gamma)\\b|\\b(rho)\\b|\\b(phi)\\b|\\b(psi)\\b|\\b(pi)\\b|\\b(sigma)\\b|\\b(theta)\\b|\\b(tau)\\b|\\b(epsilon)\\b|\\b(xi)\\b|\\b(eta)\\b|\\b(kappa)\\b' # A regular expression that matches some content. Optional.
     name: 'syntax.variable' # A period-delimited list of classes that will be applied to the content identified by `match`. Optional.
   }
   {
@@ -81,6 +81,22 @@ patterns: [ # An array of individual pattern declarations.
     '1':
       'name': 'syntax.string'
   'name': 'endval'
+  'patterns': [
+    {
+      'include': '$self'
+    }
+    ]
+  }
+  {
+  'begin': '\\b(histval)\\b'
+  'beginCaptures':
+    '1':
+      'name': 'syntax.string'
+  'end': '\\b(end)\\b'
+  'endCaptures':
+    '1':
+      'name': 'syntax.string'
+  'name': 'histval'
   'patterns': [
     {
       'include': '$self'
